@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "python": "/Library/Frameworks/Python.framework/Versions/3.7/bin/python3",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
