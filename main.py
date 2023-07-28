@@ -25,6 +25,7 @@ def main(page):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
+    
 
     def route_change(route):
         page.views.clear()
@@ -32,7 +33,7 @@ def main(page):
             ft.View(
                 "/",
                 [
-                    ft.AppBar(title=ft.Text("Login"),center_title=True, bgcolor=ft.colors.SURFACE_VARIANT),
+                    ft.AppBar(title=ft.Text("Home"),center_title=True, bgcolor=ft.colors.SURFACE_VARIANT),
                     username,
                     password,
                     ft.Container(alignment=ft.alignment.center, content=ft.ElevatedButton("Login", on_click=btn_click)),
@@ -45,9 +46,19 @@ def main(page):
                 ft.View(
                     "/login",
                     [
-                        ft.AppBar(title=ft.Text("login"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
-                    ],
+                        ft.AppBar(title=ft.Text("Home"), center_title=True, bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.NavigationBar(
+                            destinations=[
+                                ft.NavigationDestination(icon=ft.icons.EXPLORE,selected_icon=ft.icons.EXPLORE_OUTLINED, label="Explore"),
+                                ft.NavigationDestination(icon=ft.icons.SEARCH,selected_icon=ft.icons.SEARCH_ROUNDED, label="Search"),
+                                ft.NavigationDestination(icon=ft.icons.BOOKMARK_BORDER, selected_icon=ft.icons.BOOKMARK, label="Boomark")
+                            ],
+                            on_change=lambda e: print("Selected destination:", e.control.selected_index),
+                            
+                        ),
+                        # if 
+                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/"))
+                    ]
                 )
             )
         page.update()

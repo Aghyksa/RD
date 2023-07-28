@@ -8,9 +8,8 @@ def api():
         parsed_json = response.json()
         return parsed_json
     except requests.exceptions.RequestException as e:
-        print("Error during API call:", e)
         return None
     except json.JSONDecodeError as e:
-        print("Error parsing JSON:", e)
         return None
+    
 data = api()
