@@ -16,7 +16,7 @@ def main(page):
         if matches:
             go_login(e)
         else:
-            page.controls.append(ft.Text("GAGAL LOGIN!"))
+            greetings.controls.append(ft.Text("GAGAL LOGIN!"))
         username.value = ""
         password.value = ""
         page.update()
