@@ -2,7 +2,6 @@ import flet as ft
 
 def create_username_field():
     return ft.Container(
-        alignment=ft.alignment.center,
         content=ft.TextField(label="Username", autofocus=True),
         padding=5,
         width=500,
@@ -11,7 +10,6 @@ def create_username_field():
 
 def create_password_field():
     return ft.Container(
-        alignment=ft.alignment.center,
         content=ft.TextField(label="Password", password=True, can_reveal_password=True),
         padding=5,
         width=500,

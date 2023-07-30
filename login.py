@@ -11,7 +11,7 @@ def main(page):
 
     def button_login(e):
             parse_json = api.data
-            matches = [c for c in parse_json if create_username_field().content.value == c['name'] and create_password_field().content.value == c['password']]
+            matches = [c for c in parse_json if username.content.value == c['name'] and password.content.value == c['password']]
             if matches:
                 greetings.controls.append(ft.Text("BERHASIL LOGIN!"))
             else:
@@ -22,7 +22,7 @@ def main(page):
 
     page.add(
         app_bar,
-        username,
+        ft.Container(alignment=ft.alignment.center, content=username),
         ft.Container(alignment=ft.alignment.center, content=password),
         ft.Container(alignment=ft.alignment.center, content=ft.ElevatedButton("Login",on_click=button_login,style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=10)))),
         greetings,

@@ -26,7 +26,6 @@ def main(page):
         top_view = page.views[-1]
         page.go(top_view.route)
     
-
     def route_change(route):
         page.views.clear()
         page.views.append(
@@ -53,15 +52,32 @@ def main(page):
                                 ft.NavigationDestination(icon=ft.icons.SEARCH,selected_icon=ft.icons.SEARCH_ROUNDED, label="Search"),
                                 ft.NavigationDestination(icon=ft.icons.BOOKMARK_BORDER, selected_icon=ft.icons.BOOKMARK, label="Boomark")
                             ],
-                            on_change=lambda e: print("Selected destination:", e.control.selected_index),
+                            on_change=lambda e: define_route(e),
                             
                         ),
-                        # if 
                         ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/"))
                     ]
                 )
             )
+        elif page.route == "/user":
+            page.views.append(
+                ft.View(
+                    "/user",
+                    [
+                        ft.AppBar(title=ft.Text("User"), center_title=True, bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.ElevatedButton("Go Home on user", on_click=lambda _: page.go("/")),
+                        
+                    ]
+                )
+            )
         page.update()
+
+    def define_route(e):
+        if page.route == "/login":
+            if e.data == '1':
+                page.route = "/user"
+                route_change(e)
+
 
     def go_login(e):
         page.route = "/login"
