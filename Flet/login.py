@@ -8,6 +8,7 @@ def main(page):
     password = create_password_field()
     app_bar = create_app_bar()
     greetings = create_greetings_column()
+    
 
     def button_login(e):
             parse_json = api.data
@@ -19,12 +20,13 @@ def main(page):
             username.value = ""
             password.value = ""
             page.update()
-
+            
+    button = ft.ElevatedButton("Login", on_click=button_login, style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=10)))
     page.add(
         app_bar,
         ft.Container(alignment=ft.alignment.center, content=username),
         ft.Container(alignment=ft.alignment.center, content=password),
-        ft.Container(alignment=ft.alignment.center, content=ft.ElevatedButton("Login",on_click=button_login,style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=10)))),
+        ft.Container(alignment=ft.alignment.center, content=button),
         greetings,
     )
 
